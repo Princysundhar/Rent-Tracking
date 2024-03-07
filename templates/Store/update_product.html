@@ -1,0 +1,59 @@
+{% extends 'Store/store_index.html'%}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/update_product_post/{{ data1.id }}" method="post" enctype="multipart/form-data" name="form1" id="form1">
+{% csrf_token %}
+  <table width="200" border="1" class="table table-bordered">
+    <tr style="color: black">
+      <th scope="row">Category</th>
+      <td>
+        <select name="select" id="select" class="form-control" required>
+            {% for i in data %}
+                <option value="{{ i.id }}"{% if i.id == data1.CATEGORY_id %} selected {% endif %}>{{ i.category_name }}</option>
+            {% endfor %}
+      </select></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Product Name</th>
+      <td>
+      <input type="text" name="textfield" id="textfield" value="{{ data1.product_name }}" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Date</th>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data1.product_date }}" class="form-control" required/></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Image</th>
+      <td>
+          <img src="{{ data1.image }}" alt="" height="100px" width="100px"/>
+      <input type="file" name="fileField" id="fileField" class="form-control" required /></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Amount</th>
+      <td>
+      <input type="text" name="textfield3" id="textfield3" value="{{ data1.amount }}" class="form-control" required/></td>
+    </tr>
+    <tr style="color: black">
+      <th scope="row">Count</th>
+      <td>
+      <input type="text" name="textfield4" id="textfield4" value="{{ data1.count }}" class="form-control" required/></td>
+    </tr>
+    <tr>
+        <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="Update" class="btn btn-outline-primary"/></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+
+{% endblock %}

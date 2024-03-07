@@ -1,0 +1,41 @@
+{% extends 'Store/store_index.html'%}
+{% block body %}
+
+{% load static %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-bordered">
+    <tr style="background-color: #828282;color:black">
+      <th scope="col">SL.NO</th>
+      <th scope="col">RATING</th>
+      <th scope="col">USER INFO</th>
+      <th scope="col">DATE</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td><img src="{{ i.rating.0 }}" alt="" width="20px" height="20px">
+          <img src="{{ i.rating.1 }}" alt="" width="20px" height="20px">
+          <img src="{{ i.rating.2 }}" alt="" width="20px" height="20px">
+          <img src="{{ i.rating.3 }}" alt="" width="20px" height="20px">
+          <img src="{{ i.rating.4 }}" alt="" width="20px" height="20px">
+      </td>
+
+      <td>&nbsp;{{ i.USER.name }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

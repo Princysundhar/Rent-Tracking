@@ -1,0 +1,33 @@
+{% extends 'Admin/admin_index.html'%}
+{% block body %}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-bordered">
+    <tr style="background-color: #828282;color:black">
+      <th scope="col">SL.NO</th>
+      <th scope="col">CATEGORY NAME</th>
+      <th scope="col">&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr style="color: black">
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.category_name }}</td>
+      <td><p><a href="/update_category/{{ i.id }}#ad" class="btn btn-outline-primary">Update</a></p>
+      <p><a href="/delete_category/{{ i.id }}" class="btn btn-outline-danger" onclick="return confirm('Are you sure?')">Delete</a></p></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+
+{% endblock %}
